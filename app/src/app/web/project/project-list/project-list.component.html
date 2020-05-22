@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="user-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">Lista projektów</h3>
+            <a href="admin/projects/create" class="nav-link" *ngIf="isAdmin" >Dodaj projekt</a>
+            <button *ngIf="isAdmin" (click)="openOnWeb()" class="btn btn-warning btn-xm" >Podgląd formatu PDF</button>
+            <button *ngIf="isAdmin" (click)="downloadPDF()" class="btn btn-success btn-xm" style="margin-left: 10px" >Pobierz PDF</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nazwa projektu</th>
+            <th scope="col">Status projektu</th>
+            <th scope="col">Kierownik budowy</th>
+            <th scope="col">Nazwa ekipy</th>
+            <th scope="col" *ngIf="isAdmin" >Opcje edycji</th>
+            <th scope="col" *ngIf="!isAdmin" >Szczegóły</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let project of projects | async">
+            <th >{{project.id}}</th>
+            <td>{{project.projectName}}</td>
+            <td>{{project.projectStatus}}</td>
+            <td>{{project.user.name}}</td>
+            <td>{{project.team.teamName}}</td>
+            <td>
+              <button *ngIf="isAdmin" (click)="projectUpdate(project.id)" class="btn btn-primary"  style="margin-right: 10px">Aktualizuj</button>
+              <button *ngIf="isAdmin" (click)="deleteProject(project.id)" class="btn btn-danger">Usuń</button>
+              <button  (click)="projectDetails(project.id)" class="btn btn-info" style="margin-left: 10px">Szczegóły</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

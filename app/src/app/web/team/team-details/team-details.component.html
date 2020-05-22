@@ -1,0 +1,13 @@
+<h2 style="margin-left: 30px">Ekipa szczegóły</h2>
+
+<hr/>
+<div *ngIf="team">
+  <div>
+    <label style="margin-left: 30px"><b>Nazwa: </b></label> {{team.teamName}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Opis: </b></label> {{team.description}}
+  </div>
+</div>
+<br>
+<button (click)="list()" class="btn btn-primary" style="margin-left: 30px">Powrót do listy pracowników</button><br>

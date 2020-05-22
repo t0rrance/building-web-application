@@ -1,0 +1,78 @@
+<!--<div class="panel panel-primary">-->
+
+  <!--<div class="panel-heading">-->
+    <!--<div class="navbar-nav mr-auto">-->
+      <!--<li class="nav-item">-->
+        <!--<a href="admin/employees/create" class="nav-link" *ngIf="isAdmin" >Dodaj pracownika</a>-->
+      <!--</li>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="panel-body">-->
+    <!--<table class="table table-striped">-->
+      <!--<thead>-->
+      <!--<tr>-->
+        <!--<th>Firstname</th>-->
+        <!--<th>Lastname</th>-->
+        <!--<th>Email</th>-->
+        <!--<th>Actions</th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+      <!--<tr *ngFor="let team of employees | async">-->
+        <!--<td>{{team.firstName}}</td>-->
+        <!--<td>{{team.lastName}}</td>-->
+        <!--<td>{{team.emailId}}</td>-->
+        <!--<td>-->
+          <!--<button *ngIf="isAdmin" (click)="employeeUpdate(team)" class="btn btn-primary"  style="margin-right: 10px">Update</button>-->
+          <!--<button *ngIf="isAdmin" (click)="deleteEmployee(team.id)" class="btn btn-danger">Delete</button>-->
+          <!--<button  (click)="employeeDetails(team.id)" class="btn btn-info" style="margin-left: 10px">Details</button>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="container">
+  <div class="user-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">Lista pracowników</h3>
+            <a href="admin/employees/create" class="nav-link" *ngIf="isAdmin" >Dodaj pracownika</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Imię</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nazwa ekipy</th>
+            <th scope="col" *ngIf="isAdmin" >Opcje edycji</th>
+            <th scope="col" *ngIf="!isAdmin" >Szczegóły</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let employee of employees | async">
+            <th >{{employee.id}}</th>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.emailId}}</td>
+            <td>{{employee.team.teamName}}</td>
+            <td>
+              <button *ngIf="isAdmin" (click)="employeeUpdate(employee.id)" class="btn btn-primary"  style="margin-right: 10px">Aktualizuj</button>
+              <button *ngIf="isAdmin" (click)="deleteEmployee(employee.id)" class="btn btn-danger">Usuń</button>
+              <button  (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Szczegóły</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

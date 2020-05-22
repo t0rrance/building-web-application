@@ -1,0 +1,29 @@
+<h3 style="margin-left: 30px">Edycja projektu</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" style="margin-left: 30px">Nazwa projektu</label>
+      <input type="text" class="form-control" style="margin-left: 30px" id="firstName" required [(ngModel)]="project.projectName" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name" style="margin-left: 30px">Status projektu</label>
+      <input type="text" class="form-control" style="margin-left: 30px" id="lastName" required [(ngModel)]="project.projectStatus" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name" style="margin-left: 30px">Przydzielony kierownik budowy</label>
+      <select style="margin-left: 15px" [(ngModel)]="project.user" name="team">
+        <option  *ngFor="let user of usersList | async" [ngValue]="user">{{user.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="name" style="margin-left: 30px">Przydział do ekipy</label>
+      <select style="margin-left: 15px" [(ngModel)]="project.team" name="team">
+        <option  *ngFor="let team of teamsList | async" [ngValue]="team">{{team.teamName}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success" style="margin-left: 30px">Zapisz</button>
+  </form>
+</div>

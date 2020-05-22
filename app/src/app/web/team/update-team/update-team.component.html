@@ -1,0 +1,14 @@
+<h3 style="margin-left: 30px">Edycja ekipy</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name" style="margin-left: 30px">Nazwa ekipy</label>
+      <input type="text" class="form-control" style="margin-left: 30px" id="firstName" required [(ngModel)]="team.teamName" name="firstName">
+    </div>
+    <div class="form-group">
+      <label for="name" style="margin-left: 30px">Opis</label>
+      <input type="text" class="form-control" style="margin-left: 30px" id="firopisstName" required [(ngModel)]="team.description" name="s">
+    </div>
+    <button type="submit" class="btn btn-success" style="margin-left: 30px">Zapisz</button>
+  </form>
+</div>

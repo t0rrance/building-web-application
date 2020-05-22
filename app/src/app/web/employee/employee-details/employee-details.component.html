@@ -1,0 +1,22 @@
+<h2 style="margin-left: 30px">Pracownik szczegóły</h2>
+
+<hr/>
+<div *ngIf="employee">
+  <div>
+    <label style="margin-left: 30px"><b>Imię: </b></label> {{employee.firstName}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Nazwisko: </b></label> {{employee.lastName}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Email: </b></label> {{employee.emailId}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Adres zamieszkania: </b></label> {{employee.address}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Ekipa: </b></label> {{employee.team.teamName}}
+  </div>
+</div>
+<br>
+<button (click)="list()" class="btn btn-primary" style="margin-left: 30px">Powrót do listy pracowników</button><br>

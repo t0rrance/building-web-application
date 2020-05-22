@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="user-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <a href="admin/projects/create" class="nav-link" *ngIf="isAdmin" >Dodaj projekt</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h3>Utwórz projekt</h3>
+        <div [hidden]="submitted" style="width: 400px;">
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="name">Nazwa projektu</label>
+              <input type="text" class="form-control" id="firstName" required [(ngModel)]="project.projectName" name="firstName">
+            </div>
+
+            <div class="form-group">
+              <label for="name">Status projektu</label>
+              <input type="text" class="form-control" id="lastName" required [(ngModel)]="project.projectStatus" name="lastName">
+            </div>
+
+            <div class="form-group">
+              <label for="name" style="margin-right: 15px">Przydzielony kierownik budowy</label>
+              <!--<div class="alert alert-danger" >-->
+              <!--Lista kierowników budowy jest pusta! Dodaj kierownika!-->
+              <!--</div>-->
+              <select  [(ngModel)]="project.user" name="team">
+                <option *ngFor="let user of usersList | async" [ngValue]="user">{{user.name}}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="name" style="margin-right: 15px">Przydział do ekipy</label>
+              <!--<div class="alert alert-danger" >-->
+              <!--Lista ekip jest pusta! Stwórz ekipę!-->
+              <!--</div>-->
+              <select  [(ngModel)]="project.team" name="team">
+                <option *ngFor="let team of teamsList | async" [ngValue]="team">{{team.teamName}}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-success">Zapisz</button>
+          </form>
+        </div>
+
+        <div [hidden]="!submitted">
+          <h4>You submitted successfully!</h4>
+          <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<h3>Create Employee</h3>-->
+<!--<div [hidden]="submitted" style="width: 400px;">-->
+<!--<form (ngSubmit)="onSubmit()">-->
+<!--<div class="form-group">-->
+<!--<label for="name">First Name</label>-->
+<!--<input type="text" class="form-control" id="firstName" required [(ngModel)]="team.firstName" name="firstName">-->
+<!--</div>-->
+
+<!--<div class="form-group">-->
+<!--<label for="name">Last Name</label>-->
+<!--<input type="text" class="form-control" id="lastName" required [(ngModel)]="team.lastName" name="lastName">-->
+<!--</div>-->
+
+<!--<div class="form-group">-->
+<!--<label for="name">Email</label>-->
+<!--<input type="text" class="form-control" id="emailId" required [(ngModel)]="team.emailId" name="emailId">-->
+<!--</div>-->
+
+<!--<button type="submit" class="btn btn-success">Submit</button>-->
+<!--</form>-->
+<!--</div>-->
+
+<!--<div [hidden]="!submitted">-->
+<!--<h4>You submitted successfully!</h4>-->
+<!--&lt;!&ndash; <button class="btn btn-success" (click)="newEmployee()">Add</button> &ndash;&gt;-->
+<!--</div>-->

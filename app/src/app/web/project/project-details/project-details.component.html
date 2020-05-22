@@ -1,0 +1,19 @@
+<h2 style="margin-left: 30px">Projekt szczegóły</h2>
+
+<hr/>
+<div *ngIf="project">
+  <div>
+    <label style="margin-left: 30px"><b>Nazwa projektu: </b></label> {{project.projectName}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Status projektu: </b></label> {{project.projectStatus}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Kierownik budowy: </b></label> {{project.user.name}}
+  </div>
+  <div>
+    <label style="margin-left: 30px"><b>Ekipa: </b></label> {{project.team.teamName}}
+  </div>
+</div>
+<br>
+<button (click)="list()" class="btn btn-primary" style="margin-left: 30px">Powrót do listy projektów</button><br>
